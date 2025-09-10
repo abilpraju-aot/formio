@@ -3,6 +3,7 @@
 module.exports = function(router) {
   return {
     alias: require('./alias')(router),
+    alterCurrentSubmissionWithPrevious: require('./alterCurrentSubmissionWithPrevious')(router),
     params: require('./params')(router),
     accessHandler: require('./accessHandler')(router),
     addSubmissionResourceAccess: require('./addSubmissionResourceAccess')(router),
@@ -12,6 +13,7 @@ module.exports = function(router) {
     bootstrapSubmissionAccess: require('./bootstrapSubmissionAccess')(router),
     condensePermissionTypes: require('./condensePermissionTypes')(router),
     condenseSubmissionPermissionTypes: require('./condenseSubmissionPermissionTypes')(router),
+    configHandler: require('./configHandler')(router),
     filterIdCreate: require('./filterIdCreate')(router),
     filterMongooseExists: require('./filterMongooseExists')(router),
     filterResourcejsResponse: require('./filterResourcejsResponse')(router),
@@ -37,8 +39,13 @@ module.exports = function(router) {
     tokenHandler: require('./tokenHandler')(router),
     restrictRequestTypes: require('./restrictRequestTypes')(router),
     filterIndex: require('./filterIndex')(router),
-    mongodbConnectionState: require('./mongodbConnectionState')(router),
-    revisionLoader: require('./revisionLoader')(router),
-    tokenVerify:require("./tokenVerify")(router)
+    mongodbConnectionState: require('./mongodbConnectionState')(router), 
+    tokenVerify:require("./tokenVerify")(router),
+    formRevisionLoader: require('./formRevisionLoader')(router),
+    submissionRevisionLoader: require('./submissionRevisionLoader')(router),
+    filterBundleSubmissionData: require('./filterBundleSubmissionData')(router),
+    checkCurrentFormIsBundle:  require('./checkCurrentFormIsBundle')(router),
+    handleFormsList: require('./handleFormsList')(router),
+
   };
 };

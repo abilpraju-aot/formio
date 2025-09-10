@@ -65,6 +65,7 @@ module.exports = function(router) {
           }
           next();
         },
+        router.formio.middleware.handleFormsList,
         router.formio.middleware.filterIdCreate,
         router.formio.middleware.filterMongooseExists({field: 'deleted', isNull: true}),
         router.formio.middleware.bootstrapEntityOwner,
@@ -76,7 +77,7 @@ module.exports = function(router) {
       after: [
         sanitizeValidations,
         router.formio.middleware.bootstrapFormAccess,
-        router.formio.middleware.revisionLoader,
+        router.formio.middleware.formRevisionLoader,
         router.formio.middleware.formLoader,
         router.formio.middleware.formActionHandler('after'),
         router.formio.middleware.filterResourcejsResponse(['deleted', '__v']),
